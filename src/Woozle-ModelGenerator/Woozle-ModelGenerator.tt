@@ -32,7 +32,7 @@
 
 //3. Configure the path to your edmx file:
 
-string inputFile = @"..\ImprovisationAcademy.Persistence\ImprovisationAcademyModel.edmx";
+string inputFile = @"YourApplicationModel.edmx";
 
 //***********************************************************************************************
 
