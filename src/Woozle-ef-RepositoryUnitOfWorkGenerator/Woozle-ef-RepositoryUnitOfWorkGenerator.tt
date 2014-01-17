@@ -25,7 +25,7 @@
 
 //1. Copy this file into your persistence assembly
 
-//2. Make sure your model assembly has a reference to woozle and woozle-ef
+//2. Make sure your model assembly has a reference to woozle
 
 //3. Configure the name of your application. The name is used to generate the unit of work related classes.
 // Make sure that your configured name is the same as the configured application name in the model generator
