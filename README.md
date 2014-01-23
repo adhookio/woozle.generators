@@ -1,5 +1,4 @@
-woozle.generators
-=================
+#Woozle Generators
 
 
 ##Generate the model POCO classes
