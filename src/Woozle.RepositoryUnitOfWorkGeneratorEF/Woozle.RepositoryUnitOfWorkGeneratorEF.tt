@@ -92,6 +92,7 @@ foreach (var entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name
 	#>
 
 		<#=WriteSynchronizeMethod(entity, code) #>
+
 	}
 
 <#
@@ -372,9 +373,9 @@ string CheckForMandator(EntityType entity, CodeGenerationTools code)
 	return "";
 }
 
-string GetRepositoryInterface(EntityType entity, CodeGenerationTools code)
+string GetRepositoryInterface(EntityType entity, CodeGenerationTools code, string applicationName)
 {
-	return " : AbstractRepository<" + entity.Name + ">";
+	return " : " + applicationName + "Repository<" + entity.Name + ">";
 }
 
 string GetRepository(EntityType entity, CodeGenerationTools code)
@@ -455,11 +456,13 @@ string WriteSynchronizeMethod(EntityType entity, CodeGenerationTools code)
 		  "			" + navProperties + Environment.NewLine +
 		  "			return attachedObj; " + Environment.NewLine +
           "		}" + Environment.NewLine + 
-          "		catch (Exception e)" + Environment.NewLine + 
-          "		{" + Environment.NewLine + 
-	      "			this.Logger.Error(e.Message); " + Environment.NewLine +
-		  "			throw new PersistenceException(PersistenceOperation.SYNCHRONIZE, e); " + Environment.NewLine +
-          "		} " + Environment.NewLine +
-		  "     } ";
+            "	catch (Exception e)" + Environment.NewLine + 
+            "	{" + Environment.NewLine + 
+			"		this.Logger.Error(e.Message); " + Environment.NewLine +
+			"		throw new PersistenceException(PersistenceOperation.SYNCHRONIZE, e); " + Environment.NewLine +
+            "	} " + Environment.NewLine +
+		  "  } ";
 }
+
+
 #>
