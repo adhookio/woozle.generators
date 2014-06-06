@@ -190,6 +190,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Woozle.Model;
+using Microsoft.WindowsAzure;
 using Woozle.Model.SessionHandling;
 using Woozle.Persistence;
 using Woozle.Persistence.Ef;
@@ -239,7 +240,7 @@ void WriteEfEntityClass(string applicationName)
 #>
 public class Ef<#=applicationName#>Entity : Woozle.Persistence.Ef.EfUnitOfWork, I<#=applicationName#>UnitOfWork
 {
-    public Ef<#=applicationName#>Entity() : base("name=Ef<#=applicationName#>Entity")
+    public Ef<#=applicationName#>Entity() : base(CloudConfigurationManager.GetSetting("<#=applicationName#>ConnectionString")))
     {
         this.Configuration.ProxyCreationEnabled = false;
         this.Configuration.LazyLoadingEnabled = false;
